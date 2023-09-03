@@ -1,13 +1,16 @@
 package com.inc.mowa.ui.main
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.view.GravityCompat
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.navigation.NavigationView
 import com.inc.mowa.R
 import com.inc.mowa.databinding.ActivityMainBinding
@@ -17,13 +20,19 @@ import com.inc.mowa.ui.main.home.HomeFragment
 import com.inc.mowa.ui.main.phonebook.PhoneBookFragment
 import com.inc.mowa.ui.main.statistics.StatisticsFragment
 import com.inc.mowa.ui.policy.PrivacyInformationPolicyActivity
+import com.inc.mowa.utils.ApplicationClass.Companion.LOG_APP
+import com.inc.mowa.utils.ApplicationClass.Companion.LOG_LOCATION
+import com.inc.mowa.utils.ApplicationClass.Companion.REQUEST_LOCATION
 import com.inc.mowa.utils.ApplicationClass.Companion.getNotificationIntent
+import com.inc.mowa.utils.RequestPermissions
 import com.inc.mowa.utils.getAlarmPermissionStatus
+import com.inc.mowa.viewmodel.LocationViewModel
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: ActivityMainBinding
     private lateinit var homeNavigationItem: MenuItem
     private lateinit var alarmPermissionSwitch: SwitchCompat
+    private lateinit var locationViewModel: LocationViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +42,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         initBottomNavigation()
         initSideMenu()
         initClickListener()
+
+        locationViewModel = ViewModelProvider(this@MainActivity)[LocationViewModel::class.java]
+        RequestPermissions(this, locationViewModel).requestLocation()
     }
 
     override fun onResume() {
@@ -82,6 +94,26 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
         }
         return false
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        Log.d(LOG_APP, "MainActivity.onRequestPermissionsResult")
+
+        when (requestCode) {
+            REQUEST_LOCATION -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.d(LOG_LOCATION, "Granted location permission by user")
+                    locationViewModel.startLocationUpdates()
+                } else {
+                    Log.d(LOG_LOCATION, "Not granted location permission by user")
+                }
+            }
+        }
     }
 
     /**
@@ -172,6 +204,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     /**
      * Show popup window to check logout
+     *
+     * @author seonwoo
      */
     private fun showLogoutDialog() {
         AlertDialog.Builder(this@MainActivity, R.style.dialog)
@@ -189,6 +223,4 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             .create()
             .show()
     }
-
-    // TODO: implement location service & GPS listeners
 }

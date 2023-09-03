@@ -19,6 +19,11 @@ class ApplicationClass : Application() {
         const val TAG_USER_ID: String = "USER_ID"
         const val TAG_INTRODUCTION_VIEW_STATUS: String = "INTRODUCTION_VIEW_STATUS"
 
+        const val LOG_APP: String = "MoWA"
+        const val LOG_LOCATION: String = "Location"
+
+        const val REQUEST_LOCATION: Int = 0x00000001
+
         private const val BASE_URL: String = "http://localhost:5000"
 
         lateinit var sharedPreferences: SharedPreferences
