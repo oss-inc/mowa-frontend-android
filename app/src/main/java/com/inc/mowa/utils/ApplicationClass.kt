@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.provider.Settings
+import android.widget.Toast
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -21,6 +22,7 @@ class ApplicationClass : Application() {
 
         const val LOG_APP: String = "MoWA"
         const val LOG_LOCATION: String = "Location"
+        const val LOG_API: String = "API"
 
         const val REQUEST_LOCATION: Int = 0x00000001
 
@@ -31,6 +33,8 @@ class ApplicationClass : Application() {
 
         /**
          * Using intent, move to setting associated with alarm
+         *
+         * @author seonwoo
          */
         fun getNotificationIntent(packageName: String, uid: Int): Intent {
             val intent = Intent().apply {
@@ -39,6 +43,15 @@ class ApplicationClass : Application() {
             }
 
             return intent
+        }
+
+        /**
+         * Show toast message
+         *
+         * @author seonwoo
+         */
+        fun showToast(context: Context, message: String) {
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
         }
     }
 
