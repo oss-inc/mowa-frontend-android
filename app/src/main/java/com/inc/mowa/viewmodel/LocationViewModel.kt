@@ -2,7 +2,6 @@ package com.inc.mowa.viewmodel
 
 import android.annotation.SuppressLint
 import android.app.Application
-import android.location.Location
 import android.os.Looper
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel

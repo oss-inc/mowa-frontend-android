@@ -7,6 +7,7 @@ import com.inc.mowa.databinding.ActivityLoginBinding
 import com.inc.mowa.ui.main.MainActivity
 import com.inc.mowa.ui.password.ChangePasswordStep1Activity
 import com.inc.mowa.ui.signup.SignUpActivity
+import com.inc.mowa.utils.setUserEmail
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -41,6 +42,8 @@ class LoginActivity : AppCompatActivity() {
         // click login button
         binding.loginBtn.setOnClickListener {
             // TODO: confirm email login id & password
+
+            setUserEmail(binding.loginEmailEt.text.toString())
 
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

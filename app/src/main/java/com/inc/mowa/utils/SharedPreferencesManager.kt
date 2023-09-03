@@ -1,27 +1,27 @@
 package com.inc.mowa.utils
 
 import com.inc.mowa.utils.ApplicationClass.Companion.TAG_INTRODUCTION_VIEW_STATUS
-import com.inc.mowa.utils.ApplicationClass.Companion.TAG_USER_ID
+import com.inc.mowa.utils.ApplicationClass.Companion.TAG_USER_EMAIL
 import com.inc.mowa.utils.ApplicationClass.Companion.sharedPreferences
 
 /**
- * Save user id to SharedPreferences
+ * Save user email to SharedPreferences
  *
  * @author namseonu
  */
-fun setUserId(userId: String) {
+fun setUserEmail(userEmail: String) {
     val editor = sharedPreferences.edit()
-    editor.putString(TAG_USER_ID, userId)
+    editor.putString(TAG_USER_EMAIL, userEmail)
     editor.apply()
 }
 
 /**
- * Get user id from SharedPreferences
+ * Get user email from SharedPreferences
  *
  * @author namseonu
  */
-fun getUserId(): String? {
-    return sharedPreferences.getString(TAG_USER_ID, "")
+fun getUserEmail(): String? {
+    return sharedPreferences.getString(TAG_USER_EMAIL, "")
 }
 
 /**

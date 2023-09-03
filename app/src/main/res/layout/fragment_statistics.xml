@@ -47,14 +47,14 @@
         app:layout_constraintVertical_chainStyle="packed">
 
         <ImageView
-            android:id="@+id/home_previous_month_iv"
+            android:id="@+id/statistics_previous_month_iv"
             android:layout_width="0dp"
             android:layout_height="25dp"
             android:layout_weight="1"
             android:src="@drawable/ic_back_bold_green" />
 
         <TextView
-            android:id="@+id/home_title_tv"
+            android:id="@+id/statistics_date_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -65,7 +65,7 @@
             android:textSize="26sp" />
 
         <ImageView
-            android:id="@+id/home_next_month_iv"
+            android:id="@+id/statistics_next_month_iv"
             android:layout_width="0dp"
             android:layout_height="25dp"
             android:layout_weight="1"
