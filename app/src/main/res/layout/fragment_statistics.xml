@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_home">
+
+    <View
+        android:id="@+id/statistics_top_space_v"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toTopOf="@id/statistics_title_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/statistics_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nanumgothic"
+        android:text="@string/statistics"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/statistics_date_ll"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statistics_top_space_v" />
+
+    <LinearLayout
+        android:id="@+id/statistics_date_ll"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="5dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/statistics_date_line_v"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statistics_title_tv"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <ImageView
+            android:id="@+id/home_previous_month_iv"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_back_bold_green" />
+
+        <TextView
+            android:id="@+id/home_title_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/nanumgothic_extrabold"
+            android:text="@string/statistics_date"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="26sp" />
+
+        <ImageView
+            android:id="@+id/home_next_month_iv"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_next_bold_green" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/statistics_date_line_v"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/ic_horizontal_line_green"
+        app:layout_constraintBottom_toTopOf="@id/statistics_container_cl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statistics_date_ll" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/statistics_container_cl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statistics_date_line_v">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/statistics_warning_count_cl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/bg_rectangle_round_white_small"
+            android:padding="10dp"
+            app:layout_constraintBottom_toTopOf="@id/statistics_activity_count_cl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/statistics_warning_count_title_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bg_rectangle_round_innershadow_white"
+                android:fontFamily="@font/nanumgothic"
+                android:gravity="center_horizontal|center_vertical"
+                android:padding="10dp"
+                android:text="@string/warning_count"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/statistics_warning_count_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/statistics_warning_count_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/nanumgothic"
+                android:text="@string/home_initial_number"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/statistics_warning_count_title_tv" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/statistics_activity_count_cl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/bg_rectangle_round_white_small"
+            android:padding="10dp"
+            app:layout_constraintBottom_toTopOf="@id/statistics_fall_count_cl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/statistics_warning_count_cl"
+            app:layout_constraintVertical_chainStyle="packed">
+
+            <TextView
+                android:id="@+id/statistics_activity_count_title_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bg_rectangle_round_innershadow_white"
+                android:fontFamily="@font/nanumgothic"
+                android:gravity="center_horizontal|center_vertical"
+                android:padding="10dp"
+                android:text="@string/activity_count"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/statistics_activity_count_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/statistics_activity_count_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/nanumgothic"
+                android:text="@string/home_initial_number"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/statistics_activity_count_title_tv" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/statistics_fall_count_cl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/bg_rectangle_round_white_small"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/statistics_activity_count_cl">
+
+            <TextView
+                android:id="@+id/statistics_fall_count_title_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bg_rectangle_round_innershadow_white"
+                android:fontFamily="@font/nanumgothic"
+                android:gravity="center_horizontal|center_vertical"
+                android:padding="10dp"
+                android:text="@string/fall_count"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@id/statistics_fall_count_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/statistics_fall_count_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/nanumgothic"
+                android:text="@string/home_initial_number"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/statistics_fall_count_title_tv" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

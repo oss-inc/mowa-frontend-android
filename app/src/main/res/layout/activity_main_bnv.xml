@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- fragment -->
+    <FrameLayout
+        android:id="@+id/main_bnv_fl"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/main_bnv_rl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- setting menu icon -->
+    <ImageView
+        android:id="@+id/main_bnv_setting_iv"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/menu"
+        android:src="@drawable/ic_menu_gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignTop="@id/main_bnv_rl"
+        android:background="@drawable/bg_gradient_gray"
+        app:layout_constraintBottom_toTopOf="@id/main_bnv_rl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/main_bnv_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/main_bnv"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:translationZ="20dp"
+            app:itemBackground="@color/white"
+            app:itemIconSize="40dp"
+            app:itemIconTint="@drawable/selector_main_bnv"
+            app:itemTextColor="@drawable/selector_main_bnv"
+            app:labelVisibilityMode="unlabeled"
+            app:menu="@menu/menu_bnv" />
+
+    </RelativeLayout>
+
+    <!-- center bottom icon/button -->
+    <ImageView
+        android:id="@+id/main_bnv_center_iv"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="20dp"
+        android:contentDescription="@string/home"
+        android:src="@drawable/ic_bnv_home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- blur the entire screen -->
+    <View
+        android:id="@+id/main_bg_v"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_translucent"
+        android:translationZ="1dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
