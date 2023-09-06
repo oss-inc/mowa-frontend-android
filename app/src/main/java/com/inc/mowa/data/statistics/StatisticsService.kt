@@ -32,13 +32,10 @@ class StatisticsService {
                         return
                     }
 
-                    Log.d(LOG_API, "getDailyStatistics: ${response.body().toString()}")
+                    val dailyStatisticsResponse = response.body()!!
+                    val activityStats = dailyStatisticsResponse.activityStats
 
-                    // if success
-                    when (response.code()) {
-                        200 -> statisticsView.onGetDailyStatisticsSuccess(response.body()!!)
-                        else -> statisticsView.onGetDailyStatisticsFailure(response.message())
-                    }
+                    statisticsView.onGetDailyStatisticsSuccess(activityStats)
                 }
 
                 override fun onFailure(call: Call<DailyStatisticsResponse>, t: Throwable) {
@@ -65,14 +62,14 @@ class StatisticsService {
                 ) {
                     if (!response.isSuccessful) {
                         Log.w(LOG_API, "Error on response of getMonthlyStatistics")
+                        statisticsView.onGetMonthlyStatisticsFailure(response.message())
                         return
                     }
 
-                    // if success
-                    when (response.code()) {
-                        200 -> statisticsView.onGetMonthlyStatisticsSuccess(response.body()!!)
-                        else -> statisticsView.onGetMonthlyStatisticsFailure(response.message())
-                    }
+                    val monthlyStatisticsResponse = response.body()!!
+                    val activityStats = monthlyStatisticsResponse.activityStats
+
+                    statisticsView.onGetMonthlyStatisticsSuccess(activityStats)
                 }
 
                 override fun onFailure(call: Call<MonthlyStatisticsResponse>, t: Throwable) {

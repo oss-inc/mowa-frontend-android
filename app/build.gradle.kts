@@ -98,4 +98,8 @@ dependencies {
 
     // view model
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+
+    // Kakao map api
+    implementation(fileTree(mapOf("include" to listOf("*.jar"), "dir" to "libs")))
+    implementation(files("libs/libDaumMapAndroid.jar"))
 }

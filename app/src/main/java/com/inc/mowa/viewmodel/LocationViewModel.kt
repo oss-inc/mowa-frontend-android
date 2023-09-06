@@ -35,7 +35,7 @@ class LocationViewModel(application: Application) : AndroidViewModel(application
 
     init {
         // initialize
-        setLocation(37.566535, 126.9779692)
+        setLocation(37.6583599, 126.8320201)
     }
 
     override fun onCleared() {

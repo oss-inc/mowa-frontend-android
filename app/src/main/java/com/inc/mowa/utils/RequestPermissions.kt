@@ -18,13 +18,17 @@ class RequestPermissions(private val context: Context, private val locationViewM
     private val permissionLocationUpApi29Impl = arrayOf(
         android.Manifest.permission.ACCESS_FINE_LOCATION,
         android.Manifest.permission.ACCESS_COARSE_LOCATION,
-        android.Manifest.permission.ACCESS_BACKGROUND_LOCATION
+        android.Manifest.permission.ACCESS_BACKGROUND_LOCATION,
+        android.Manifest.permission.READ_CONTACTS,
+        android.Manifest.permission.WRITE_CONTACTS
     )
 
     @TargetApi(Build.VERSION_CODES.P)
     private val permissionsLocationDownApi29Impl = arrayOf(
         android.Manifest.permission.ACCESS_FINE_LOCATION,
-        android.Manifest.permission.ACCESS_COARSE_LOCATION
+        android.Manifest.permission.ACCESS_COARSE_LOCATION,
+        android.Manifest.permission.READ_CONTACTS,
+        android.Manifest.permission.WRITE_CONTACTS
     )
 
     /**
@@ -47,6 +51,14 @@ class RequestPermissions(private val context: Context, private val locationViewM
                 ContextCompat.checkSelfPermission(
                     context,
                     permissionLocationUpApi29Impl[2]
+                ) != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(
+                    context,
+                    permissionLocationUpApi29Impl[3]
+                ) != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(
+                    context,
+                    permissionLocationUpApi29Impl[4]
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
                 requestPermissions(
@@ -66,6 +78,14 @@ class RequestPermissions(private val context: Context, private val locationViewM
                 ActivityCompat.checkSelfPermission(
                     context,
                     permissionsLocationDownApi29Impl[1]
+                ) != PackageManager.PERMISSION_GRANTED ||
+                ActivityCompat.checkSelfPermission(
+                    context,
+                    permissionsLocationDownApi29Impl[2]
+                ) != PackageManager.PERMISSION_GRANTED ||
+                ActivityCompat.checkSelfPermission(
+                    context,
+                    permissionsLocationDownApi29Impl[3]
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
                 requestPermissions(

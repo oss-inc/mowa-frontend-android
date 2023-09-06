@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.inc.mowa.data.statistics.DailyStatisticsResponse
-import com.inc.mowa.data.statistics.MonthlyStatisticsResponse
+import com.inc.mowa.data.statistics.MonthlyActivityStats
 import com.inc.mowa.data.statistics.MonthlyStatisticsView
 import com.inc.mowa.data.statistics.StatisticsService
 import com.inc.mowa.databinding.FragmentStatisticsBinding
-import com.inc.mowa.utils.ApplicationClass
 import com.inc.mowa.utils.ApplicationClass.Companion.LOG_API
 import com.inc.mowa.utils.getUserEmail
 import java.util.Calendar
@@ -52,6 +50,13 @@ class StatisticsFragment : Fragment(), MonthlyStatisticsView {
     private fun initDate() {
         val date = year.toString() + "년 " + month.toString() + "월"
         binding.statisticsDateTv.text = date
+
+        statisticsService.getMonthlyStatistics(
+            this@StatisticsFragment,
+            getUserEmail()!!,
+            year,
+            month
+        )
     }
 
     private fun initClickListener() {
@@ -66,6 +71,9 @@ class StatisticsFragment : Fragment(), MonthlyStatisticsView {
                 year,
                 month
             )
+
+            val newDate = year.toString() + "년 " + month.toString() + "월"
+            binding.statisticsDateTv.text = newDate
         }
 
         binding.statisticsNextMonthIv.setOnClickListener {
@@ -78,22 +86,27 @@ class StatisticsFragment : Fragment(), MonthlyStatisticsView {
                 year,
                 month
             )
+
+            val newDate = year.toString() + "년 " + month.toString() + "월"
+            binding.statisticsDateTv.text = newDate
         }
     }
 
-    private fun setStatistics(statistics: MonthlyStatisticsResponse) {
+    private fun setStatistics(statistics: MonthlyActivityStats) {
         binding.statisticsWarningCountTv.text = statistics.warningCount.toString()
         binding.statisticsActivityCountTv.text = statistics.activityCount.toString()
         binding.statisticsFallCountTv.text = statistics.fallCount.toString()
     }
 
-    override fun onGetMonthlyStatisticsSuccess(statistics: MonthlyStatisticsResponse) {
+    override fun onGetMonthlyStatisticsSuccess(statistics: MonthlyActivityStats) {
         Log.d(LOG_API, "Success to call getMonthlyStatistics")
+        Log.d(LOG_API, "statistics: $statistics")
         setStatistics(statistics)
     }
 
     override fun onGetMonthlyStatisticsFailure(message: String) {
-        Log.w(LOG_API, "Fail to call getMonthlyStatistics")
-        ApplicationClass.showToast(requireContext(), "월별 활동 통계 데이터 요청에 실패하였습니다.")
+        binding.statisticsWarningCountTv.text = 0.toString()
+        binding.statisticsActivityCountTv.text = 0.toString()
+        binding.statisticsFallCountTv.text = 0.toString()
     }
 }

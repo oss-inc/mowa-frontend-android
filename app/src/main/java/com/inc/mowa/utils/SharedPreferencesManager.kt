@@ -41,3 +41,37 @@ fun setIntroductionViewStatus(introductionViewStatus: Int) {
 fun getIntroductionViewStatus(): Int {
     return sharedPreferences.getInt(TAG_INTRODUCTION_VIEW_STATUS, 1)
 }
+
+fun setLatitude(latitude: String) {
+    val editor = sharedPreferences.edit()
+    editor.putString(ApplicationClass.TAG_LATITUDE, latitude)
+    editor.apply()
+}
+
+fun getLatitude(): Double {
+    val latitude = sharedPreferences.getString(ApplicationClass.TAG_LATITUDE, "")
+
+    return if (latitude == null || latitude == "") {
+        // default
+        37.6583599
+    } else {
+        latitude.toDouble()
+    }
+}
+
+fun setLongitude(longitude: String) {
+    val editor = sharedPreferences.edit()
+    editor.putString(ApplicationClass.TAG_LONGITUDE, longitude)
+    editor.apply()
+}
+
+fun getLongitude(): Double {
+    val longitude = sharedPreferences.getString(ApplicationClass.TAG_LONGITUDE, "")
+
+    return if (longitude == null || longitude == "") {
+        // default
+        126.8320201
+    } else {
+        longitude.toDouble()
+    }
+}

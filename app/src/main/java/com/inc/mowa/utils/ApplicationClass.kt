@@ -20,6 +20,8 @@ class ApplicationClass : Application() {
         const val TAG_APP: String = "MOWA"
         const val TAG_USER_EMAIL: String = "USER_EMAIL"
         const val TAG_INTRODUCTION_VIEW_STATUS: String = "INTRODUCTION_VIEW_STATUS"
+        const val TAG_LATITUDE: String = "LATITUDE"
+        const val TAG_LONGITUDE: String = "LONGITUDE"
 
         const val LOG_APP: String = "MoWA"
         const val LOG_LOCATION: String = "Location"

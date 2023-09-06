@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.inc.mowa.data.statistics.DailyStatisticsResponse
+import com.inc.mowa.data.statistics.DailyActivityStats
 import com.inc.mowa.data.statistics.DailyStatisticsView
 import com.inc.mowa.data.statistics.StatisticsService
 import com.inc.mowa.data.weather.OpenWeatherService
@@ -62,6 +62,7 @@ class HomeFragment : Fragment(), OpenWeatherView, DailyStatisticsView {
 
         statisticsViewModel.statistics.observe(viewLifecycleOwner) { statistics ->
             if (statistics != null) {
+                Log.d(LOG_API, "statistics: $statistics")
                 setStatistics(statistics)
             }
         }
@@ -132,7 +133,7 @@ class HomeFragment : Fragment(), OpenWeatherView, DailyStatisticsView {
         }
     }
 
-    private fun setStatistics(statistics: DailyStatisticsResponse) {
+    private fun setStatistics(statistics: DailyActivityStats) {
         binding.homeWarningCountTv.text = statistics.warningCount.toString()
         binding.homeActivityCountTv.text = statistics.activityCount.toString()
         binding.homeFallCountTv.text = statistics.fallCount.toString()
@@ -150,7 +151,7 @@ class HomeFragment : Fragment(), OpenWeatherView, DailyStatisticsView {
         showToast(requireContext(), "날씨 정보를 불러오지 못하였습니다.")
     }
 
-    override fun onGetDailyStatisticsSuccess(statistics: DailyStatisticsResponse) {
+    override fun onGetDailyStatisticsSuccess(statistics: DailyActivityStats) {
         Log.d(LOG_API, "Success to call getDailyStatistics")
         statisticsViewModel.setDailyStatistics(
             statistics.warningCount,
