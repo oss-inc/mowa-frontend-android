@@ -4,29 +4,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/phonebook_publiccontacts_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="5dp"
+    <ImageView
+        android:id="@+id/phonebook_contacts_update_iv"
+        android:layout_width="80dp"
+        android:layout_height="25dp"
         android:layout_marginEnd="30dp"
-        app:layout_constraintBottom_toTopOf="@id/phonebook_publiccontacts_rv"
+        android:background="@drawable/btn_update"
+        android:contentDescription="@string/update"
+        app:layout_constraintBottom_toTopOf="@id/phonebook_contacts_rv"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/phonebook_publiccontacts_rv"
+        android:id="@+id/phonebook_contacts_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/phonebook_publiccontacts_tv" />
+        app:layout_constraintTop_toBottomOf="@id/phonebook_contacts_update_iv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

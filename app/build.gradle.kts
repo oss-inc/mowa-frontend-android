@@ -1,3 +1,9 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
+fun getProperties(key: String): String {
+    return gradleLocalProperties(rootDir).getProperty(key)
+}
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -15,6 +21,15 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "SERVER_BASE_URL", getProperties("server.base.url"))
+        buildConfigField("String", "OPEN_WEATHER_BASE_URL", getProperties("open.weather.base.url"))
+        buildConfigField("String", "OPEN_WEATHER_API_KEY", getProperties("open.weather.api.key"))
+        buildConfigField("String", "WELFARE_CENTER_BASE_URL", getProperties("welfare.center.base.url"))
+        buildConfigField("String", "WELFARE_CENTER_API_KEY", getProperties("welfare.center.api.key"))
+        buildConfigField("String", "KAKAO_MAP_API_KEY", getProperties("kakao.map.api.key"))
+
+        manifestPlaceholders["KAKAO_MAP_API_KEY"] = getProperties("kakao.map.api.key")
     }
 
     buildTypes {
@@ -35,6 +50,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -76,4 +92,14 @@ dependencies {
 
     // coroutine
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+
+    // location
+    implementation("com.google.android.gms:play-services-location:21.0.0")
+
+    // view model
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+
+    // Kakao map api
+    implementation(fileTree(mapOf("include" to listOf("*.jar"), "dir" to "libs")))
+    implementation(files("libs/libDaumMapAndroid.jar"))
 }

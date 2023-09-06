@@ -5,6 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.provider.Settings
+import android.widget.Toast
+import com.inc.mowa.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -16,16 +18,26 @@ class ApplicationClass : Application() {
     companion object {
 
         const val TAG_APP: String = "MOWA"
-        const val TAG_USER_ID: String = "USER_ID"
+        const val TAG_USER_EMAIL: String = "USER_EMAIL"
         const val TAG_INTRODUCTION_VIEW_STATUS: String = "INTRODUCTION_VIEW_STATUS"
+        const val TAG_LATITUDE: String = "LATITUDE"
+        const val TAG_LONGITUDE: String = "LONGITUDE"
 
-        private const val BASE_URL: String = "http://localhost:5000"
+        const val LOG_APP: String = "MoWA"
+        const val LOG_LOCATION: String = "Location"
+        const val LOG_API: String = "API"
+
+        const val REQUEST_LOCATION: Int = 0x00000001
+
+        private const val BASE_URL: String = BuildConfig.SERVER_BASE_URL
 
         lateinit var sharedPreferences: SharedPreferences
         lateinit var retrofit: Retrofit
 
         /**
          * Using intent, move to setting associated with alarm
+         *
+         * @author seonwoo
          */
         fun getNotificationIntent(packageName: String, uid: Int): Intent {
             val intent = Intent().apply {
@@ -34,6 +46,15 @@ class ApplicationClass : Application() {
             }
 
             return intent
+        }
+
+        /**
+         * Show toast message
+         *
+         * @author seonwoo
+         */
+        fun showToast(context: Context, message: String) {
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
         }
     }
 

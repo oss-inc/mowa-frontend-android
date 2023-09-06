@@ -44,7 +44,7 @@ class PrivacyInformationPolicyRVAdapter(private val polices: ArrayList<PrivacyIn
 
         fun bind(privacyInformationPolicy: PrivacyInformationPolicy) {
 
-            if (binding.itemPrivacyInformationPolicyTitleTv.equals(" ")) {
+            if (binding.itemPrivacyInformationPolicyTitleTv.equals(" ") || binding.itemPrivacyInformationPolicyTitleTv.equals("")) {
                 binding.itemPrivacyInformationPolicyTitleTv.visibility = View.GONE
             } else {
                 binding.itemPrivacyInformationPolicyTitleTv.text = privacyInformationPolicy.title

@@ -89,13 +89,6 @@ class PrivacyInformationPolicyActivity : AppCompatActivity() {
                 this.resources.getString(R.string.policy_privacy_information_i_description)
             )
         )
-
-        policies.add(
-            PrivacyInformationPolicy(
-                this.resources.getString(R.string.policy_privacy_information_j_title),
-                this.resources.getString(R.string.policy_privacy_information_j_description)
-            )
-        )
     }
 
     /**
