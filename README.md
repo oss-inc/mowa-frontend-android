@@ -3,6 +3,11 @@
 
 <br/>
 
+🌎 [README.md in English](https://github.com/oss-inc/mowa-frontend-android/blob/main/README.md)  
+🇰🇷  [README.md in Korean](https://github.com/oss-inc/mowa-frontend-android/blob/main/README_KO.md)
+
+<br/>
+
 <!-- Skill -->
 <div>
     <img src="https://img.shields.io/badge/android-3DDC84?style=for-the-badge&logo=android&logoColor=white">
