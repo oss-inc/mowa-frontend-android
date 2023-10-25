@@ -30,6 +30,10 @@ class IntroductionActivity : AppCompatActivity() {
             // already check not show
             startLoginActivity()
         }
+
+        if (getIntroductionViewStatus() == 2) {
+            binding.introductionNotShowCb.visibility = android.view.View.INVISIBLE
+        }
     }
 
     /**
@@ -52,9 +56,14 @@ class IntroductionActivity : AppCompatActivity() {
 
         // click close button
         binding.introductionExitIv.setOnClickListener {
-            isShown = if (binding.introductionNotShowCb.isChecked) 0 else 1
-            setIntroductionViewStatus(isShown)
-            startLoginActivity()
+
+            if (getIntroductionViewStatus() == 2) {
+                finish()
+            } else {
+                isShown = if (binding.introductionNotShowCb.isChecked) 0 else 1
+                setIntroductionViewStatus(isShown)
+                startLoginActivity()
+            }
         }
     }
 

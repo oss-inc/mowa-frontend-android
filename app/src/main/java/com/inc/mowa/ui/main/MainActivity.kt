@@ -27,6 +27,7 @@ import com.inc.mowa.utils.ApplicationClass.Companion.REQUEST_LOCATION
 import com.inc.mowa.utils.ApplicationClass.Companion.getNotificationIntent
 import com.inc.mowa.utils.RequestPermissions
 import com.inc.mowa.utils.getAlarmPermissionStatus
+import com.inc.mowa.utils.setIntroductionViewStatus
 import com.inc.mowa.utils.setUserEmail
 import com.inc.mowa.viewmodel.LocationViewModel
 import java.security.MessageDigest
@@ -81,6 +82,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             // application introduction
             R.id.setting_app_intro_item -> {
+                setIntroductionViewStatus(2)
                 val intent = Intent(this@MainActivity, IntroductionActivity::class.java)
                 startActivity(intent)
             }

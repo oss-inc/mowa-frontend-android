@@ -28,6 +28,7 @@ fun getUserEmail(): String? {
  * Save introduction view status to SharedPreferences
  * The value 0 means 'not show'
  * The value 1 means 'allow show again'
+ * The value 2 means 'from settings'
  */
 fun setIntroductionViewStatus(introductionViewStatus: Int) {
     val editor = sharedPreferences.edit()
@@ -53,7 +54,7 @@ fun getLatitude(): Double {
 
     return if (latitude == null || latitude == "") {
         // default
-        37.6583599
+        37.4507
     } else {
         latitude.toDouble()
     }
@@ -70,7 +71,7 @@ fun getLongitude(): Double {
 
     return if (longitude == null || longitude == "") {
         // default
-        126.8320201
+        127.1288
     } else {
         longitude.toDouble()
     }

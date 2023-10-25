@@ -19,6 +19,7 @@ import com.inc.mowa.data.welfarecenter.WelfareCenterService
 import com.inc.mowa.data.welfarecenter.WelfareCenterView
 import com.inc.mowa.databinding.FragmentPhonebookWelfarecenterBinding
 import com.inc.mowa.utils.ApplicationClass.Companion.LOG_API
+import com.inc.mowa.utils.ApplicationClass.Companion.LOG_LOCATION
 import com.inc.mowa.utils.ApplicationClass.Companion.showToast
 import com.inc.mowa.utils.getLatitude
 import com.inc.mowa.utils.getLongitude

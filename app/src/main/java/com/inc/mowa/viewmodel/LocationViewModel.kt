@@ -11,6 +11,9 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
 import com.inc.mowa.utils.ApplicationClass.Companion.LOG_LOCATION
+import com.inc.mowa.utils.ApplicationClass.Companion.sharedPreferences
+import com.inc.mowa.utils.setLatitude
+import com.inc.mowa.utils.setLongitude
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -28,6 +31,8 @@ class LocationViewModel(application: Application) : AndroidViewModel(application
 
     private var locationListener: LocationListener = LocationListener { location ->
         setLocation(location.latitude, location.longitude)
+        setLatitude(location.latitude.toString())
+        setLongitude(location.longitude.toString())
         Log.d(LOG_LOCATION, "location: $location")
     }
 
@@ -35,7 +40,7 @@ class LocationViewModel(application: Application) : AndroidViewModel(application
 
     init {
         // initialize
-        setLocation(37.6583599, 126.8320201)
+        setLocation(37.4507, 127.1288)
     }
 
     override fun onCleared() {
@@ -65,6 +70,7 @@ class LocationViewModel(application: Application) : AndroidViewModel(application
      */
     private fun setLocation(latitude: Double, longitude: Double) {
         _currentLocation.value = LocationValue(latitude, longitude)
+
         Log.d(
             LOG_LOCATION,
             "currentLocation: (${currentLocation.value!!.latitude}, ${currentLocation.value!!.longitude})"

@@ -56,8 +56,11 @@ class WelfareCenterService {
                                     jsonObject.asJsonObject.get("FACLT_NM").asString
                                 val facultyType: String =
                                     jsonObject.asJsonObject.get("FACLT_KIND_NM").asString
-                                val telephoneNumber: String =
-                                    jsonObject.asJsonObject.get("DETAIL_TELNO").asString
+
+                                val telephoneNumber: String? =
+                                    if (jsonObject.asJsonObject.get("DETAIL_TELNO").isJsonNull) null else jsonObject.asJsonObject.get(
+                                        "DETAIL_TELNO"
+                                    ).asString
 
                                 val latitude: Double? =
                                     if (jsonObject.asJsonObject.get("REFINE_WGS84_LAT").isJsonNull) null else jsonObject.asJsonObject.get(

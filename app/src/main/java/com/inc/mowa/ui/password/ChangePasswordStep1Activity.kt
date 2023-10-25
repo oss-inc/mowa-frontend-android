@@ -23,7 +23,7 @@ class ChangePasswordStep1Activity : AppCompatActivity(), SendEmailForChangingPas
 
     private val userService: UserService = UserService()
 
-    private var isVerified = false
+    private var isVerified = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,22 +81,17 @@ class ChangePasswordStep1Activity : AppCompatActivity(), SendEmailForChangingPas
                 this,
                 VerifyEmailRequest(
                     binding.changePasswordStep1EmailEt.text.toString(),
-                    binding.changePasswordStep1VerifyCodeEt.text.toString()
+                    Integer.parseInt(binding.changePasswordStep1VerifyCodeEt.text.toString())
                 )
             )
         }
 
         // click email verification button
         binding.changePasswordStep1Btn.setOnClickListener {
-            if (!isVerified) {
-                showToast(this@ChangePasswordStep1Activity, "이메일 인증을 완료해 주세요.")
-                return@setOnClickListener
-            } else {
-                val intent = Intent(this, ChangePasswordStep2Activity::class.java)
-                intent.putExtra("email", binding.changePasswordStep1EmailEt.text.toString())
-                startActivity(intent)
-                finish()
-            }
+            val intent = Intent(this, ChangePasswordStep2Activity::class.java)
+            intent.putExtra("email", binding.changePasswordStep1EmailEt.text.toString())
+            startActivity(intent)
+            finish()
         }
     }
 

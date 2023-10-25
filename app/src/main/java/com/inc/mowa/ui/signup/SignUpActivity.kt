@@ -26,7 +26,7 @@ class SignUpActivity : AppCompatActivity(), SignUpView, SendEmailView, VerifyEma
 
     private val userService: UserService = UserService()
 
-    private var isVerified = false
+    private var isVerified = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,7 +102,7 @@ class SignUpActivity : AppCompatActivity(), SignUpView, SendEmailView, VerifyEma
             userService.verifyEmail(
                 this, VerifyEmailRequest(
                     binding.signupEmailEt.text.toString(),
-                    binding.signupVerifyCodeEt.text.toString()
+                    Integer.parseInt(binding.signupVerifyCodeEt.text.toString())
                 )
             )
         }
@@ -120,13 +120,7 @@ class SignUpActivity : AppCompatActivity(), SignUpView, SendEmailView, VerifyEma
                     binding.signupNameEt.text.toString(),
                     binding.signupPasswordEt.text.toString()
                 )
-
-                if (!isVerified) {
-                    showToast(this@SignUpActivity, "이메일 인증을 완료해 주세요.")
-                    return@setOnClickListener
-                } else {
-                    userService.signUp(this, signUpRequest)
-                }
+                userService.signUp(this, signUpRequest)
             } else {
                 // password is different
                 showToast(this@SignUpActivity, getString(R.string.error_different_password))

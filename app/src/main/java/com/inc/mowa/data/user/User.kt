@@ -28,7 +28,7 @@ data class SendEmailRequest(
 
 data class VerifyEmailRequest(
     @SerializedName("email") var email: String,
-    @SerializedName("otp") var otp: String
+    @SerializedName("otp") var otp: Int
 )
 
 data class ChangePasswordRequest(
